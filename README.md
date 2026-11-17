@@ -63,4 +63,4 @@ cluster-admin rights.
 Tested end-to-end on an ODF 4.22.7-rhodf install (half-initialized: NooBaa stuck in
 `Creating` behind an unrecoverable CNPG Postgres cluster) — the full run completed
 in ~67s and left no ODF resources behind (namespace, CSVs, CRDs, SCCs, webhook all
-verified gone). The session record is available at `local://odf-uninstall-luke.md`.
+verified gone). Full test record: [TEST-RECORD.md](TEST-RECORD.md).
