@@ -143,6 +143,10 @@ for pv in $(run oc get pv --no-headers 2>/dev/null | awk '$4=="Released" {print 
 done
 # Leftover ODF storageclasses
 run oc delete sc openshift-storage.noobaa.io --wait=true --timeout=5m 2>/dev/null || true
+# Leftover SCCs (not removed by namespace deletion)
+run oc delete scc rook-ceph-csi rook-ceph ocs-metrics-exporter noobaa-endpoint noobaa noobaa-db 2>/dev/null || true
+# ODF mutating webhook (needed for clean reinstall)
+run oc delete mutatingwebhookconfigurations csv.odf.openshift.io 2>/dev/null || true
 
 log "9. Delete ODF CustomResourceDefinitions (NotFound is fine)"
 run oc delete crd \
